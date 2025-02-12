@@ -22,7 +22,7 @@ jobs:
         run: |
           pip install -r requirements.txt
       - name: Build Docker image
-        run: docker build -t fastapi-book-app .
+        run: docker build -t fastapi-book-proj .
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
@@ -40,7 +40,6 @@ jobs:
           username: ${{ secrets.DEPLOY_SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            docker stop fastapi-book-app || true;
-            docker rm fastapi-book-app || true;
-            docker pull dev0px/fastapi-book-app;
+            docker stop fastapi-book-proj || true;
+            docker rm fastapi-book-proj || true;
             docker run -d --name fastapi-book-proj -p 8000:8000 dev0px/fastapi-book-proj;
