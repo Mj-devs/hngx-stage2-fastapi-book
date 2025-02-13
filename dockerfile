@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Make port 8000 available to the world outside this container
 EXPOSE 8000
 
-# Define environment variable
+# Define environment variable task wasn't easy to do
 ENV PYTHONPATH=/api
 
 # Run the application when the container launches
