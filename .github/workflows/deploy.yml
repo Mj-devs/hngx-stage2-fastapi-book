@@ -21,8 +21,12 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          
       - name: Build Docker image
         run: docker build -t fastapi-book-proj .
+
+      - name: Tag Docker image
+        run: docker tag fastapi-book-proj ${{ secrets.DOCKER_USERNAME }}/fastapi-book-proj:latest
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
