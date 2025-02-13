@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.10'
 
       - name: Install dependencies
         run: |
@@ -42,4 +42,5 @@ jobs:
           script: |
             docker stop fastapi-book-proj || true;
             docker rm fastapi-book-proj || true;
+            docker pull dev0px/fastapi-book-proj;
             docker run -d --name fastapi-book-proj -p 8000:8000 dev0px/fastapi-book-proj;
